@@ -1,0 +1,18 @@
+---
+- name: Ensure directory exists with correct ownership
+  ansible.builtin.file:
+    path: /home/kali/Tools
+    state: directory
+    owner: kali
+    group: kali
+    mode: '0755'
+  when: copy_files
+
+- name: Copy all files to the machine
+  ansible.builtin.copy:
+    src: ../files/
+    dest: /home/kali/Tools
+    owner: kali
+    group: kali
+    mode: '0644'
+  when: copy_files

@@ -1,0 +1,14 @@
+---
+# KasmVNC Control
+disable_kasmvnc: false
+
+# Additional Packages
+additional_install: []
+
+# Git Configuration
+configure_git: false
+git_user_name: ""
+git_user_email: ""
+
+# Customization
+copy_files: false

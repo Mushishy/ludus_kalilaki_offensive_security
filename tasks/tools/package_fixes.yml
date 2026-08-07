@@ -1,0 +1,14 @@
+---
+- name: Run apt update, dist-upgrade, and autoremove
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: dist
+    autoremove: true
+
+- name: Set Python3 as interpreter explicitly
+  ansible.builtin.set_fact:
+    ansible_python_interpreter: /usr/bin/python3
+
+#- name: Download and install Kali archive GPG key
+#  ansible.builtin.shell: |
+#    curl -fsSL https://archive.kali.org/archive-key.asc | sudo gpg --dearmor -o /usr/share/keyrings/kali-archive-keyring.gpg --yes

@@ -1,0 +1,27 @@
+---
+- name: Disable KasmVNC (if enabled)
+  ansible.builtin.systemd:
+    name: kasmvnc@1
+    state: stopped
+    enabled: false
+  when: disable_kasmvnc
+
+- name: Run playbook - package_fixes.yml
+  ansible.builtin.include_tasks:
+    file: tools/package_fixes.yml
+
+- name: Run playbook - additional_languages.yml
+  ansible.builtin.include_tasks:
+    file: tools/additional_languages.yml
+
+- name: Run playbook - tool_setup.yml
+  ansible.builtin.include_tasks:
+    file: tools/tool_setup.yml
+
+- name: Run playbook - copy_files.yml
+  ansible.builtin.include_tasks:
+    file: tools/copy_files.yml
+
+- name: Run playbook - setup_user.yml
+  ansible.builtin.include_tasks:
+    file: setup_user.yml

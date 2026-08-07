@@ -1,0 +1,13 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: ludus_kalilaki-offensive-security
+  version: 1.0.0
+  authors:
+    - Mushishy
+  description: Ansible role for Kali Linux offensive security configuration
+  license: GPLv3
+  min_ansible_version: "2.10"
+  platforms:
+    - name: Kali

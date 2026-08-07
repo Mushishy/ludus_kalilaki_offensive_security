@@ -1,0 +1,193 @@
+---
+- name: Install tools from apt
+  ansible.builtin.apt:
+    name:
+# 0. Basic Tools
+      - wget
+      - curl
+      - net-tools
+      - rlwrap
+      - rsync
+      - p7zip-full
+      - openvpn
+      - proxychains
+      - wireguard
+      - dos2unix
+      - git
+      #- kali-tools-top10
+  ## Rarely Used:
+      #- knock
+
+# 1. Information Gathering & OSINT
+  ## Official kali-tools-information-gathering:
+      - dnsenum
+      - dnsrecon
+      - fierce
+      - nbtscan
+      - nmap
+      - smbmap
+  ## Additional:
+      - enum4linux-ng
+      - ftp
+      - smbclient
+      - snmp
+      - amass
+      - dnsutils
+      - sublist3r
+      - whois
+  ## Rarely Used:
+      #- dmitry
+      #- onesixtyone
+      #- ncftp
+      #- nmapAutomator
+      #- tcptraceroute
+      #- tftp-hpa
+      #- traceroute
+
+  ## Outdated:
+      #- arp-scan
+      #- libimage-exiftool-perl
+      #- masscan
+      #- netdiscover
+      #- recon-ng
+      #- spiderfoot
+      #- theharvester
+
+# 2. Vulnerability
+  ## Official kali-tools-vulnerability:
+      - nikto
+  ## Additional:
+      - exploitdb
+  ## Rarely Used:
+      #- nuclei
+
+# 3. Web Application Testing
+  ## Official kali-tools-web:
+      - dirb
+      - dirbuster
+      - hydra
+      - nikto
+      - skipfish
+      - sqlmap
+      - webshells
+      - wfuzz
+      - wpscan
+      - zaproxy
+  ## Additional:
+      - ffuf
+      - gobuster
+      - burpsuite
+      - joomscan
+  ## Rarely Used:
+      #- testssl.sh
+
+# 4. Database Testing
+  ## Official kali-tools-database:
+      - sqlmap
+  ## Rarely Used:
+      #- redis-cli
+
+# 5. Passwords
+  ## Official kali-tools-passwords:
+      - hashcat
+      - hashid
+      - hydra
+      - john
+      - wordlists
+      - seclists
+      - zip2john
+  ## Outdated:
+      #- cewl
+      #- crunch
+      #- medusa
+      #- patator
+
+# 6. Reverse Engineering
+  ## Not Needed:
+      #- apktool
+      #- jadx
+      #- gdb
+
+# 7. Exploitation
+  ## Official kali-tools-exploitation:
+      - exploitdb
+      - metasploit-framework
+  ## Additional:
+      - chisel
+      - evil-winrm
+      - impacket-scripts
+      - netexec
+      - python3-impacket
+      - python3-pypykatz
+      - socat
+      - sshuttle
+      - tmux
+  ## Outdated:
+      #- armitage
+      #- set
+
+# 7b. Active Directory
+  ## Not Essential:
+      #- crackmapexec
+      #- bloodhound-python
+
+# 8. Sniffing & Spoofing
+  ## Official kali-tools-sniffing-spoofing:
+      - responder
+      - tcpdump
+      - wireshark
+  ## Outdated:
+      #- dsniff
+      #- ettercap-text-only
+      #- p0f
+      #- mitmproxy
+
+# 9. Forensics
+  ## Not Needed:
+      #- apktool
+      #- binwalk
+      #- jadx
+      #- steghide
+      #- xxd
+
+# 10. Social Engineering
+  ## Not Needed:
+      #- gophish
+      #- set
+
+# 11. Wireless
+  ## Not Needed:
+      #- aircrack-ng
+      #- airgeddon
+      #- bluez
+      #- kismet
+      #- wifiphisher
+
+# 12. Development & Scripting
+  ## Kerberos Support:
+      - krb5-user
+      - libpam-ccreds
+      - libpam-krb5
+
+    state: present
+    update_cache: true
+
+- name: Reload systemd daemon
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Check if rockyou.txt.gz exists
+  ansible.builtin.stat:
+    path: /usr/share/wordlists/rockyou.txt.gz
+  register: rockyou_gz_file
+
+- name: Uncompress rockyou.txt.gz
+  ansible.builtin.command:
+    cmd: gunzip /usr/share/wordlists/rockyou.txt.gz
+  when: rockyou_gz_file.stat.exists
+
+- name: Install additional packages from variable
+  ansible.builtin.apt:
+    name: "{{ additional_install }}"
+    state: present
+  when: additional_install is defined and additional_install | length > 0
