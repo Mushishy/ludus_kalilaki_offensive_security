@@ -14,9 +14,9 @@
   ansible.builtin.include_tasks:
     file: tools/additional_languages.yml
 
-- name: Run playbook - tool_setup.yml
+- name: Run playbook - tools_setup.yml
   ansible.builtin.include_tasks:
-    file: tools/tool_setup.yml
+    file: tools/tools_setup.yml
 
 - name: Run playbook - copy_files.yml
   ansible.builtin.include_tasks:

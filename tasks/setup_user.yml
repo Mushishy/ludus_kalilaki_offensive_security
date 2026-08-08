@@ -7,14 +7,6 @@
   when: configure_git and git_user_name and git_user_email
   changed_when: false
 
-- name: Ensure Home Directories are set correctly
-  ansible.builtin.lineinfile:
-    path: "/home/kali/.zshrc"
-    line: '[ "$PWD" != "kali" ] && cd kali'
-    insertafter: EOF
-    state: present
-  become_user: "kali"
-
 - name: Create .hushlogin file
   ansible.builtin.file:
     path: "/home/kali/.hushlogin"

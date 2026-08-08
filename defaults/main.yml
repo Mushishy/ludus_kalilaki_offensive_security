@@ -1,14 +1,15 @@
 ---
 # KasmVNC Control
-disable_kasmvnc: false
+ludus_disable_kasmvnc: false
 
 # Additional Packages
-additional_install: []
+ludus_additional_install: []
 
 # Git Configuration
-configure_git: false
-git_user_name: ""
-git_user_email: ""
+ludus_configure_git: false
+ludus_git_user_name: ""
+ludus_git_user_email: ""
 
 # Customization
-copy_files: false
+# Customization
+ludus_copy_files: false

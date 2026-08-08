@@ -16,7 +16,7 @@
       - git
       #- kali-tools-top10
   ## Rarely Used:
-      #- knock
+      #- knockd
 
 # 1. Information Gathering & OSINT
   ## Official kali-tools-information-gathering:
@@ -43,6 +43,9 @@
       #- tcptraceroute
       #- tftp-hpa
       #- traceroute
+      #- arping
+      #- arpwatch
+      #- sherlock
 
   ## Outdated:
       #- arp-scan
@@ -60,6 +63,7 @@
       - exploitdb
   ## Rarely Used:
       #- nuclei
+      - kubectl
 
 # 3. Web Application Testing
   ## Official kali-tools-web:
@@ -85,7 +89,7 @@
   ## Official kali-tools-database:
       - sqlmap
   ## Rarely Used:
-      #- redis-cli
+      #- redis-tools
 
 # 5. Passwords
   ## Official kali-tools-passwords:
@@ -95,7 +99,6 @@
       - john
       - wordlists
       - seclists
-      - zip2john
   ## Outdated:
       #- cewl
       #- crunch
@@ -125,11 +128,11 @@
   ## Outdated:
       #- armitage
       #- set
+      #- swaks
 
 # 7b. Active Directory
   ## Not Essential:
       #- crackmapexec
-      #- bloodhound-python
 
 # 8. Sniffing & Spoofing
   ## Official kali-tools-sniffing-spoofing:
@@ -141,6 +144,7 @@
       #- ettercap-text-only
       #- p0f
       #- mitmproxy
+      #- proxytunnel
 
 # 9. Forensics
   ## Not Needed:
@@ -149,6 +153,9 @@
       #- jadx
       #- steghide
       #- xxd
+      #- wipe
+      #- zerofree
+      #- cherrytree
 
 # 10. Social Engineering
   ## Not Needed:
@@ -162,6 +169,7 @@
       #- bluez
       #- kismet
       #- wifiphisher
+      #- btscanner
 
 # 12. Development & Scripting
   ## Kerberos Support:

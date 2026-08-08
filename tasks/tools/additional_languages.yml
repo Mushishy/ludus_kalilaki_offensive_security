@@ -6,13 +6,25 @@
       - libcurl4-openssl-dev
     state: present
 
-- name: Install C++ support
+- name: Install C++ and build toolchain support
   ansible.builtin.apt:
     name:
       - build-essential
+      - cmake
+      - ninja-build
+      - pkg-config
+      - gdb
+      - valgrind
       - mingw-w64
+      - gcc-mingw-w64
+      - g++-mingw-w64
       - libssl-dev
       - libcurl4-openssl-dev
+      - libpcap-dev
+      - libnet1-dev
+      - libffi-dev
+      - zlib1g-dev
+      - nasm
     state: present
 
 - name: Install Go support
