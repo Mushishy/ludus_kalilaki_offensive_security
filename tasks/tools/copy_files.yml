@@ -6,7 +6,7 @@
     owner: kali
     group: kali
     mode: '0755'
-  when: copy_files
+  when: ludus_copy_files
 
 - name: Copy all files to the machine
   ansible.builtin.copy:
@@ -15,4 +15,4 @@
     owner: kali
     group: kali
     mode: '0644'
-  when: copy_files
+  when: ludus_copy_files

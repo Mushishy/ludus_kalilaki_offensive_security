@@ -4,7 +4,7 @@
     name: kasmvnc@1
     state: stopped
     enabled: false
-  when: disable_kasmvnc
+  when: ludus_disable_kasmvnc
 
 - name: Run playbook - package_fixes.yml
   ansible.builtin.include_tasks:

@@ -196,6 +196,6 @@
 
 - name: Install additional packages from variable
   ansible.builtin.apt:
-    name: "{{ additional_install }}"
+    name: "{{ ludus_additional_install }}"
     state: present
-  when: additional_install is defined and additional_install | length > 0
+  when: ludus_additional_install is defined and ludus_additional_install | length > 0
